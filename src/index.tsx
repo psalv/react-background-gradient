@@ -5,8 +5,9 @@
  */
 
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-interface IProps {
+export interface IBackgroundGradientProps {
   src: string;
   options?: {
     height?: number;
@@ -18,8 +19,14 @@ interface IProps {
   };
 }
 
-export class BackgroundGradient extends React.Component<IProps> {
+export class BackgroundGradient extends React.Component<IBackgroundGradientProps> {
   render() {
-    return <div style={{ color: "red" }}>Hello</div>;
+    const { src } = this.props;
+    return <img src={src} />;
   }
 }
+
+ReactDOM.render(
+  <BackgroundGradient src={""} />,
+  document.getElementById("root")
+);
