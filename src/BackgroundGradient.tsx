@@ -5,7 +5,6 @@
  */
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 export interface IBackgroundGradientProps {
   src: string;
@@ -25,8 +24,3 @@ export class BackgroundGradient extends React.Component<IBackgroundGradientProps
     return <img src={src} />;
   }
 }
-
-ReactDOM.render(
-  <BackgroundGradient src={""} />,
-  document.getElementById("root")
-);
