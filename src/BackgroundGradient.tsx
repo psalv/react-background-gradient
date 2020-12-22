@@ -144,8 +144,6 @@ export class BackgroundGradient extends React.Component<
       return null;
     }
 
-    console.log(this.state.gradient);
-
     return (
       <ImageWrapper
         dimensions={options?.dimensions}
