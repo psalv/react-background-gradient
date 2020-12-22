@@ -76,20 +76,16 @@ export class BackgroundGradient extends React.Component<
         isVertical
           ? {
               top: 0,
-              bottom: height,
               left: 0,
-              right: width * 0.5,
+              height: height * 0.5,
               width,
-              height,
-            } // Left
+            } // Top
           : {
               top: 0,
-              bottom: height * 0.5,
               left: 0,
-              right: width,
-              width,
-              height,
-            } // Top
+              height: height,
+              width: width * 0.5,
+            } // Left
       )
       .join(",")})`;
     const to = `rgb(${colorThief
@@ -98,21 +94,17 @@ export class BackgroundGradient extends React.Component<
         this.props.options?.quality ?? QUALITY,
         isVertical
           ? {
-              top: 0,
-              bottom: height,
-              left: width * 0.5,
-              right: width,
-              width,
-              height,
-            } // Right
-          : {
               top: height * 0.5,
-              bottom: height,
               left: 0,
-              right: width,
-              width,
               height,
+              width,
             } // Bottom
+          : {
+              top: 0,
+              left: width * 0.5,
+              height,
+              width,
+            } // Right
       )
       .join(",")})`;
 
@@ -172,10 +164,10 @@ const ImageWrapper = styled.div<{
   isVertical: boolean;
 }>`
   background-image: linear-gradient(
-    ${(props) => (props.isVertical ? "to right," : "")}
+    ${(props) => (!props.isVertical ? "to right," : "")}
       ${(props) =>
         props.gradient
-          ? `${props.gradient.from},${props.gradient.to}`
+          ? `${props.gradient.to},${props.gradient.from}`
           : "white"}
   );
   display: flex;

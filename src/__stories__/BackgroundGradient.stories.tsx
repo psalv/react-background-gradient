@@ -18,8 +18,14 @@ const Template: Story<IBackgroundGradientProps> = (args) => (
   </div>
 );
 
-export const NoProps = Template.bind({});
-NoProps.args = {
+export const VerticalBlackAndWhite = Template.bind({});
+VerticalBlackAndWhite.args = {
   src:
-    "https://cdn.faire.com/fastly/a474b258e81adfe0e3cfeb0a70b6524e143c1119276df5f24b8e54706884b535.jpeg",
+    "https://cdn.faire.com/fastly/c8bf7d1c53d1dfc16849f830814259ef4222fdfb1980b4de2c7f82dd98b936a7.png",
+};
+
+export const HorizontalBlackAndWhite = Template.bind({});
+HorizontalBlackAndWhite.args = {
+  src:
+    "https://cdn.faire.com/fastly/3fec922da555fc209116c0475009363826a73c7fa584d658a955cadfa1baac3f.png",
 };
