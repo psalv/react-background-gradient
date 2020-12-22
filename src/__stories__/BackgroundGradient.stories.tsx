@@ -48,3 +48,73 @@ ForceHorizontalFromVerticalBlackAndWhite.args = {
     fit: "horizontal",
   },
 };
+
+export const HorizontalPhoto = Template.bind({});
+HorizontalPhoto.args = {
+  src: "https://i.imgur.com/qOhjIZ4.jpg",
+};
+
+export const VerticalPhoto = Template.bind({});
+VerticalPhoto.args = {
+  src: "https://i.imgur.com/PXQ82xe.jpg",
+};
+
+export const ForceVerticalHorizontalPhoto = Template.bind({});
+ForceVerticalHorizontalPhoto.args = {
+  src: "https://i.imgur.com/qOhjIZ4.jpg",
+  options: {
+    fit: "vertical",
+  },
+};
+
+export const ForceHorizontalVerticalPhoto = Template.bind({});
+ForceHorizontalVerticalPhoto.args = {
+  src: "https://i.imgur.com/PXQ82xe.jpg",
+  options: {
+    fit: "horizontal",
+  },
+};
+
+export const TallHorizontalPhoto = Template.bind({});
+TallHorizontalPhoto.args = {
+  src: "https://i.imgur.com/qOhjIZ4.jpg",
+  options: {
+    dimensions: {
+      width: '300px',
+      height: '400px;'
+    }
+  }
+};
+
+export const WideHorizontalPhoto = Template.bind({});
+WideHorizontalPhoto.args = {
+  src: "https://i.imgur.com/qOhjIZ4.jpg",
+  options: {
+    dimensions: {
+      width: '400px',
+      height: '300px;'
+    }
+  }
+};
+
+export const TallVerticalPhoto = Template.bind({});
+TallVerticalPhoto.args = {
+  src: "https://i.imgur.com/PXQ82xe.jpg",
+  options: {
+    dimensions: {
+      width: '300px',
+      height: '400px;'
+    }
+  }
+};
+
+export const WideVerticalPhoto = Template.bind({});
+WideVerticalPhoto.args = {
+  src: "https://i.imgur.com/PXQ82xe.jpg",
+  options: {
+    dimensions: {
+      width: '400px',
+      height: '300px;'
+    }
+  }
+};

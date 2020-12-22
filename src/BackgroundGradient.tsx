@@ -11,16 +11,21 @@ const ColorThief = require("./colorthief");
 export interface IBackgroundGradientProps {
   src: string;
   options?: {
-    height?: number;
-    width?: number;
+    dimensions?: IDimensions;
     // Defaults to fitting the image in whichever direction will fit within the bounding box without being cut off,
     // if no bounding box is specified, it will fit to the longer side of the image.
     // If a fit is selected, will fit the image and add gradients in the opposite direction if applicable.
     fit?: "vertical" | "horizontal";
+    // Alt text for the image
     alt?: string;
     // How accurate colorthief is at creating the gradients. 1 - 10 (1 being highest quality)
     quality?: number;
   };
+}
+
+interface IDimensions {
+  height: string;
+  width: string;
 }
 
 interface IState {
@@ -38,7 +43,7 @@ interface IColorGradient {
 }
 
 // Controls how accurate colorthief is
-const QUALITY = 10;
+const QUALITY = 5;
 
 export class BackgroundGradient extends React.Component<
   IBackgroundGradientProps,
@@ -138,8 +143,14 @@ export class BackgroundGradient extends React.Component<
       return null;
     }
 
+    console.log(this.state.gradient);
+
     return (
-      <ImageWrapper gradient={this.state.gradient} isVertical={this.isVertical}>
+      <ImageWrapper
+        dimensions={options?.dimensions}
+        gradient={this.state.gradient}
+        isVertical={this.isVertical}
+      >
         <ImageElement
           src={src}
           alt={options?.alt}
@@ -162,6 +173,7 @@ const ImageElement = styled.img<{ isVertical: boolean }>`
 `;
 
 const ImageWrapper = styled.div<{
+  dimensions?: IDimensions;
   gradient?: IColorGradient;
   isVertical: boolean;
 }>`
@@ -175,7 +187,7 @@ const ImageWrapper = styled.div<{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: ${(props) => props.dimensions?.width ?? "100%"};
+  height: ${(props) => props.dimensions?.height ?? "100%"};
   overflow: hidden;
 `;
