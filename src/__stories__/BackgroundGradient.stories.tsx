@@ -21,5 +21,5 @@ const Template: Story<IBackgroundGradientProps> = (args) => (
 export const NoProps = Template.bind({});
 NoProps.args = {
   src:
-    "https://cdn.faire.com/fastly/cd31190d06f93bfd03f2909758199b0f91caf4a6f88b153f5d007c69c2ac3887.jpeg",
+    "https://cdn.faire.com/fastly/a474b258e81adfe0e3cfeb0a70b6524e143c1119276df5f24b8e54706884b535.jpeg",
 };

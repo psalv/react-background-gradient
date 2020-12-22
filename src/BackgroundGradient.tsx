@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import styled, { css } from "styled-components";
-import ColorThief from "colorthief";
+const ColorThief = require("./colorthief");
 
 export interface IBackgroundGradientProps {
   src: string;
@@ -18,6 +18,8 @@ export interface IBackgroundGradientProps {
     // If a fit is selected, will fit the image and add gradients in the opposite direction if applicable.
     fit?: "vertical" | "horizontal";
     alt?: string;
+    // How accurate colorthief is at creating the gradients. 1 - 10 (1 being highest quality)
+    quality?: number;
   };
 }
 
@@ -34,6 +36,9 @@ interface IColorGradient {
   from: string;
   to: string;
 }
+
+// Controls how accurate colorthief is
+const QUALITY = 10;
 
 export class BackgroundGradient extends React.Component<
   IBackgroundGradientProps,
@@ -54,21 +59,71 @@ export class BackgroundGradient extends React.Component<
   }
 
   handleImageLoaded = () => {
-    if (!this.state.image) {
+    const { image } = this.state;
+    if (!image) {
       return;
     }
 
+    const { height, width } = image;
+
+    const isVertical = height > width;
+
     const colorThief = new ColorThief();
-    const color = `rgb(${colorThief.getColor(this.state.image).join(",")})`;
+    const from = `rgb(${colorThief
+      .getColor(
+        image,
+        this.props.options?.quality ?? QUALITY,
+        isVertical
+          ? {
+              top: 0,
+              bottom: height,
+              left: 0,
+              right: width * 0.5,
+              width,
+              height,
+            } // Left
+          : {
+              top: 0,
+              bottom: height * 0.5,
+              left: 0,
+              right: width,
+              width,
+              height,
+            } // Top
+      )
+      .join(",")})`;
+    const to = `rgb(${colorThief
+      .getColor(
+        image,
+        this.props.options?.quality ?? QUALITY,
+        isVertical
+          ? {
+              top: 0,
+              bottom: height,
+              left: width * 0.5,
+              right: width,
+              width,
+              height,
+            } // Right
+          : {
+              top: height * 0.5,
+              bottom: height,
+              left: 0,
+              right: width,
+              width,
+              height,
+            } // Bottom
+      )
+      .join(",")})`;
 
     this.setState({
       imageDimensions: {
-        width: this.state.image.width,
-        height: this.state.image.height,
+        width,
+        height,
       },
       gradient: {
-        from: color,
-        to: color,
+        from,
+        to,
       },
     });
   };
@@ -113,10 +168,16 @@ const ImageElement = styled.img<{ isVertical: boolean }>`
 `;
 
 const ImageWrapper = styled.div<{
-  gradient: IColorGradient;
+  gradient?: IColorGradient;
   isVertical: boolean;
 }>`
-  background-color: ${(props) => props.gradient.from};
+  background-image: linear-gradient(
+    ${(props) => (props.isVertical ? "to right," : "")}
+      ${(props) =>
+        props.gradient
+          ? `${props.gradient.from},${props.gradient.to}`
+          : "white"}
+  );
   display: flex;
   justify-content: center;
   align-items: center;
