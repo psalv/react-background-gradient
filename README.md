@@ -1,6 +1,6 @@
 # react-background-gradient
 
-## Create Instagram Stories-like background gradients for images
+## Create "Instagram Stories"-like background gradients for images
 
 ![Vertical image](https://i.imgur.com/uULYLO9.png)
 
