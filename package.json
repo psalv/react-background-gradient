@@ -1,6 +1,6 @@
 {
   "name": "react-background-gradient",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create Instagram Stories-like background gradients for images",
   "author": "Paul Salvatore",
   "license": "MIT",
@@ -51,5 +51,12 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"
-  }
+  },
+  "keywords": [
+    "image",
+    "background",
+    "gradient",
+    "instagram",
+    "stories"
+  ]
 }
