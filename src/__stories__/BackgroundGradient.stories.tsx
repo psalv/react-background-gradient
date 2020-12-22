@@ -13,10 +13,13 @@ export default {
 } as Meta;
 
 const Template: Story<IBackgroundGradientProps> = (args) => (
-  <BackgroundGradient {...args} />
+  <div style={{ width: "400px", height: "400px" }}>
+    <BackgroundGradient {...args} />
+  </div>
 );
 
 export const NoProps = Template.bind({});
 NoProps.args = {
-  src: "foo",
+  src:
+    "https://cdn.faire.com/fastly/cd31190d06f93bfd03f2909758199b0f91caf4a6f88b153f5d007c69c2ac3887.jpeg",
 };
