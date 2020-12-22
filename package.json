@@ -49,6 +49,7 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
+    "quantize": "^1.0.2",
     "styled-components": "^5.2.1"
   }
 }

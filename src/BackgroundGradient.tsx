@@ -66,7 +66,7 @@ export class BackgroundGradient extends React.Component<
 
     const { height, width } = image;
 
-    const isVertical = height > width;
+    const isVertical = height > width || this.props.options?.fit === "vertical";
 
     const colorThief = new ColorThief();
     const from = `rgb(${colorThief
@@ -96,14 +96,14 @@ export class BackgroundGradient extends React.Component<
           ? {
               top: height * 0.5,
               left: 0,
-              height,
+              height: height * 0.5,
               width,
             } // Bottom
           : {
               top: 0,
               left: width * 0.5,
               height,
-              width,
+              width: width * 0.5,
             } // Right
       )
       .join(",")})`;
@@ -121,6 +121,10 @@ export class BackgroundGradient extends React.Component<
   };
 
   get isVertical() {
+    if (this.props.options?.fit !== undefined) {
+      return this.props.options.fit === "vertical";
+    }
+
     if (!this.state.imageDimensions) {
       return false;
     }
@@ -133,8 +137,6 @@ export class BackgroundGradient extends React.Component<
     if (this.state.imageDimensions === undefined) {
       return null;
     }
-
-    console.log(this.state.gradient);
 
     return (
       <ImageWrapper gradient={this.state.gradient} isVertical={this.isVertical}>
@@ -175,4 +177,5 @@ const ImageWrapper = styled.div<{
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
