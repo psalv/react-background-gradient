@@ -43,14 +43,21 @@ var CanvasImage = function (image, focusRect) {
     this.height = this.canvas.height = image.height;
     this.context.drawImage(image, 0, 0, this.width, this.height);
   } else {
-    this.width = this.canvas.width = focusRect.width;
-    this.height = this.canvas.height = focusRect.height;
+    this.width = this.canvas.width = focusRect.width - focusRect.left;
+    this.height = this.canvas.height = focusRect.height - focusRect.top;
+
+    // TODO there's something up with the way we're drawing,
+    //   this is not working as intended
     this.context.drawImage(
       image,
       focusRect.left,
       focusRect.top,
       focusRect.width,
       focusRect.height,
+      0,
+      0,
+      this.width,
+      this.height
     );
   }
 };

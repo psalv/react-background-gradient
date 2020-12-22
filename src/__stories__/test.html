@@ -1,0 +1,30 @@
+<html>
+<style type="text/css">
+    canvas {
+        border: 1px solid red !important;
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        background: blue;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+<body></body>
+<script type="application/javascript">
+    const canvas = document.createElement("canvas");
+    canvas.height = 300;
+    canvas.width = 300;
+    const context = canvas.getContext("2d");
+    document.body.appendChild(canvas);
+
+    const image = new Image()
+    image.src = "https://cdn.faire.com/fastly/3fec922da555fc209116c0475009363826a73c7fa584d658a955cadfa1baac3f.png"
+
+    image.onload = () => {
+        context.drawImage(image, 1000, 0, 2000, 1000, 0, 0, 300, 300);
+    }
+</script>
+</html>

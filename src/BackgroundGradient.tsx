@@ -167,7 +167,7 @@ const ImageWrapper = styled.div<{
     ${(props) => (!props.isVertical ? "to right," : "")}
       ${(props) =>
         props.gradient
-          ? `${props.gradient.to},${props.gradient.from}`
+          ? `${props.gradient.from},${props.gradient.to}`
           : "white"}
   );
   display: flex;
