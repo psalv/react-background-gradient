@@ -1,9 +1,3 @@
-/**
- * @class BackgroundGradient
- * Attempts to fill an area with an image without cutting any of the image off.
- * Any whitespace is replaced by a gradient taken from the the top halves of the image.
- */
-
 import * as React from "react";
 import styled, { css } from "styled-components";
 const ColorThief = require("./colorthief");
@@ -11,6 +5,7 @@ const ColorThief = require("./colorthief");
 export interface IBackgroundGradientProps {
   src: string;
   options?: {
+    // If no dimensions are set, the image will take up it's parent container
     dimensions?: IDimensions;
     // Defaults to fitting the image in whichever direction will fit within the bounding box without being cut off,
     // if no bounding box is specified, it will fit to the longer side of the image.
@@ -18,12 +13,13 @@ export interface IBackgroundGradientProps {
     fit?: "vertical" | "horizontal";
     // Alt text for the image
     alt?: string;
-    // How accurate colorthief is at creating the gradients. 1 - 10 (1 being highest quality)
+    // How accurate colorthief is at creating the gradients. Higher quality = slower execution
+    // 1 - 10 (1 being highest quality)
     quality?: number;
   };
 }
 
-interface IDimensions {
+export interface IDimensions {
   height: string;
   width: string;
 }
@@ -45,6 +41,11 @@ interface IColorGradient {
 // Controls how accurate colorthief is
 const QUALITY = 5;
 
+/**
+ * @class BackgroundGradient
+ * Attempts to fill an area with an image without cutting any of the image off.
+ * Any whitespace is replaced by a gradient taken from the the top halves of the image.
+ */
 export class BackgroundGradient extends React.Component<
   IBackgroundGradientProps,
   IState
