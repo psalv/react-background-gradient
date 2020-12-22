@@ -1,6 +1,6 @@
 # react-background-gradient
 
-[npm link](https://www.npmjs.com/package/react-background-gradient)
+<a href="https://www.npmjs.com/package/react-background-gradient"><img src="https://img.shields.io/npm/v/react-background-gradient" alt="npm"></a>
 
 ## Create "Instagram Stories"-like background gradients for images
 
