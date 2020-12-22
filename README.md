@@ -1,5 +1,7 @@
 # react-background-gradient
 
+[npm link](https://www.npmjs.com/package/react-background-gradient)
+
 ## Create "Instagram Stories"-like background gradients for images
 
 ![Vertical image](https://i.imgur.com/uULYLO9.png)
