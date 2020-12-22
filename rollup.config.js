@@ -31,7 +31,7 @@ export default {
     }),
     commonjs({
       ignoreGlobal: true,
-      include: /\/node_modules\//,
+      include: [/\/node_modules\//, './src/colorthief.js'],
       namedExports: {
         react: Object.keys(require("react")),
         "react-is": Object.keys(require("react-is")),

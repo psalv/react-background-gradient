@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-const ColorThief = require("./colorthief");
+import ColorThief from "./colorthief";
 
 export interface IBackgroundGradientProps {
   src: string;
