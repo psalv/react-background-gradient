@@ -38,7 +38,7 @@ export interface IBackgroundGradientProps {
 ![Vertical image](https://i.imgur.com/uULYLO9.png)
 
 ```tsx
-<BackgroundImage src="https://i.imgur.com/uULYLO9.png" />
+<BackgroundGradient src="https://i.imgur.com/uULYLO9.png" />
 ```
 
 ### Horizontal Image
@@ -46,7 +46,7 @@ export interface IBackgroundGradientProps {
 ![Horizontal image](https://i.imgur.com/5c8g5dP.png)
 
 ```tsx
-<BackgroundImage src="https://i.imgur.com/5c8g5dP.png" />
+<BackgroundGradient src="https://i.imgur.com/5c8g5dP.png" />
 ```
 
 ### Wide Dimensions
@@ -54,7 +54,7 @@ export interface IBackgroundGradientProps {
 ![Wide image](https://i.imgur.com/Co686D3.png)
 
 ```tsx
-<BackgroundImage
+<BackgroundGradient
   src="https://i.imgur.com/5c8g5dP.png"
   options={{ dimensions: { width: "400px", height: "300px" } }}
 />
@@ -65,7 +65,7 @@ export interface IBackgroundGradientProps {
 ![Tall image](https://i.imgur.com/sTxadMO.png)
 
 ```tsx
-<BackgroundImage
+<BackgroundGradient
   src="https://i.imgur.com/5c8g5dP.png"
   options={{ dimensions: { width: "300px", height: "400px" } }}
 />
@@ -77,7 +77,7 @@ export interface IBackgroundGradientProps {
 
 
 ```tsx
-<BackgroundImage
+<BackgroundGradient
   src="https://i.imgur.com/5c8g5dP.png"
   options={{ fit: "horizontal" }}
 />
